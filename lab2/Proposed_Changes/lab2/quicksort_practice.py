@@ -9,6 +9,16 @@ def lomuto_partition(arr, low, high):
   values to its right must be > pivot. Preserve values outside the range.
   """
   # TODO 2.2: Translate the README's Lomuto pseudocode.
+
+  pivot = arr[high]
+  i = low - 1
+  for j in range(low, high):
+    if arr[j] <= pivot:
+        i += 1 # increment
+        arr[i], arr[j] = arr[j], arr[i] #swap 
+  arr[i + 1], arr[high] = arr[high], arr[i + 1] # swap 
+  return i + 1
+
   raise NotImplementedError("Complete lomuto_partition")
 
 

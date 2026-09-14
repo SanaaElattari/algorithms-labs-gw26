@@ -181,13 +181,13 @@ A swap with the same index is allowed and leaves the array unchanged.
 |---|---|---|---|---|---|
 | Initial | N/A | N/A | None | -1 | `[2, 8, 7, 1, 3, 5, 6, 4]` |
 | 0 | 2 | Yes | 0 and 0 | 0 | `[2, 8, 7, 1, 3, 5, 6, 4]` |
-| 1 | TODO | TODO | TODO | TODO | TODO |
-| 2 | TODO | TODO | TODO | TODO | TODO |
-| 3 | TODO | TODO | TODO | TODO | TODO |
-| 4 | TODO | TODO | TODO | TODO | TODO |
-| 5 | TODO | TODO | TODO | TODO | TODO |
-| 6 | TODO | TODO | TODO | TODO | TODO |
-| Final pivot swap | N/A | N/A | TODO | N/A | TODO |
+| 1 | 8 | No | none | 0 | `[2, 8, 7, 1, 3, 5, 6, 4]` |
+| 2 | 7 | No | none | 0 | `[2, 8, 7, 1, 3, 5, 6, 4]` |
+| 3 | 1| Yes | swap 1,3 | 1 |`[2, 1, 7, 8, 3, 5, 6, 4]`| 
+| 4 | 3| Yes | swap 4,2 | 2 |`[2, 1, 3, 8, 7, 5, 6, 4]`|
+| 5 | 5| No | none | 2 | `[2, 1, 3, 8, 7, 5, 6, 4]` |
+| 6 | 6 | No| none | 2 | `[2, 1, 3, 8, 7, 5, 6, 4]` |
+| Final | N/A | N/A | 3, 7 | N/A | `[2, 1, 3, 4, 7, 5, 6, 8]` |
 
 Record the returned pivot index and the left and right subarrays.
 
