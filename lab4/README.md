@@ -154,11 +154,11 @@ traversal of the tree after insertion. The first two rows are worked.
 |---|---|---|---|
 | 40 | None (Root) | Root | `[40]` |
 | 20 | 40 | Left | `[20, 40]` |
-| 60 | TODO | TODO | TODO |
-| 10 | TODO | TODO | TODO |
-| 30 | TODO | TODO | TODO |
-| 50 | TODO | TODO | TODO |
-| 70 | TODO | TODO | TODO |
+| 60 | 40 | RIght | '[60,20,40]'|
+| 10 | 20 | Left | `[10, 60,20, 40]`  |
+| 30 | 20 | Right | `[30,10, 60,20, 40]` |
+| 50 | 60 | Left | `[50,30,10, 60,20, 40]` |
+| 70 | 60 | Right | `[6-, 50,30,10, 60,20, 40]` |
 
 ### 1.2 Trace: Deletion
 
@@ -177,8 +177,8 @@ worked.
 | Target key | Deletion case | Successor key | Node spliced / replaced | In-order traversal afterward |
 |---|---|---|---|---|
 | 10 | 0 children (leaf) | None | 10 | `[20, 30, 40, 50, 60, 70]` |
-| 20 | TODO | TODO | TODO | TODO |
-| 40 | TODO | TODO | TODO | TODO |
+| 20 | 1 child leaf | None | 20 replaced by 30 |  `[30, 40, 50, 60, 70]`  |
+| 40 | 2 childern leaf | 50 | 50 moved from under 60 to replace 40 | `[30, 50, 60, 70]` |
 
 ### 1.3 Implementation
 
@@ -196,8 +196,14 @@ python3 bst_practice.py
 **TODO 1.4A:** In a two-child deletion (Case 3), why is the in-order successor
 guaranteed never to have a left child?
 
+
+The in-order successor in a binary search tree is guaranteed never to have a left child because it is defined as the smallest node in the right subtree. 
+
 **TODO 1.4B:** When deleting the root node of the tree, what special pointer
 updates must take place regarding `tree.root` and `node.parent`?
+
+When deleting the root, tree.root must point to the node that replaces it (or None if the tree becomes empty). The new root’s parent must be set to None.
+
 
 All three basic BST operations (search, insert, delete) run in $O(h)$ time,
 where $h$ is the height of the tree. The iterative implementations require
@@ -276,8 +282,8 @@ that repairs it. The first row is worked.
 | Insertion order | Unbalanced node and BF | Heavier child and BF | Signature | Repair |
 |---|---|---|---|---|
 | `[30, 20, 10]` | `30`, +2 | `20`, +1 | LL | `rotate_right(tree, 30)` |
-| `[10, 20, 30]` | TODO | TODO | TODO | TODO |
-| `[30, 10, 20]` | TODO | TODO | TODO | TODO |
+| `[10, 20, 30]` | '10', -2 | '20', -1 | RR | 'rotate_left(tree, 10)`' |
+| `[30, 10, 20]` | '30' , +2| '10', -1 | LR | roate left at 10 than right at 30  |
 | `[10, 30, 20]` | TODO | TODO | TODO | TODO |
 
 AVL trees strictly guarantee height $h < 1.44 \log_2(n + 2)$, ensuring
@@ -383,8 +389,8 @@ the root, 20 is its left child, and 10 is 20's left child).
 | Node | Parent after | Left after | Right after | Height after |
 |---|---|---|---|---|
 | 20 | `None` (root) | 10 | 30 | 1 |
-| 10 | TODO | TODO | TODO | TODO |
-| 30 | TODO | TODO | TODO | TODO |
+| 10 | 20 | None | None | 0 |
+| 30 | 20 | None | None | 0 |
 
 Confirm that the in-order traversal of the keys remains `[10, 20, 30]` both
 before and after the rotation.
