@@ -124,7 +124,7 @@ Open `hash_functions_practice.py` and implement the two functions (each is just
 1–2 lines of code):
 - **TODO 1.2A:** `division_hash(key, m)`
 - **TODO 1.2B:** `multiplication_hash(key, m, A)`
-
+                      
 Test your implementation by running:
 
 ```bash
